@@ -5,7 +5,12 @@
 
 }
 body{
-	background-color: #1B74CD;
+	background-color: ##ECEFF1;
+	height: 100%;
+}
+.contenido{
+	height: calc(100% - 105px);
+
 }
 
 img{
