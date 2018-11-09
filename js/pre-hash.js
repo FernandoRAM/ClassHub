@@ -59,7 +59,7 @@ function pre_hash(str) {
     *
     * */
 
-    RANDOM_CHARS = ['k', '6', 'c', 'u', 'y', 'm', '6', 'q', 't', 'i'];
+    RANDOM_CHARS = ['k', '6', 'c', 'u', 'y', 'm', '1', 'q', 't', 'i'];
     QRO_SURF = 11699;
     DEMIRANDOM = (Math.abs(Math.sin(QRO_SURF) * ascii_sum(str))).toString();
     DEMI_INDEXES = DEMIRANDOM.split('');
