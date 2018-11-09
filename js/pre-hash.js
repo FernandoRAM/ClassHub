@@ -97,8 +97,6 @@ function pre_hash(str) {
         FINAL_HASH += RANDOM_CHARS[NEW_INDEXES[i]];
     }
 
-    console.log(NEW_INDEXES, FINAL_HASH);
-
     /*
     * Se retorna el resultado de la función :)
     *
