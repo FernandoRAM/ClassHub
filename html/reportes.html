@@ -9,8 +9,9 @@
     <link rel="stylesheet" href="https://unpkg.com/onsenui/css/old-onsen-css-components.min.css">
     <link rel="stylesheet" href="../css/estilos.css">
     <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
-    <title>Calendario</title>
+    <title>Reportes</title>
 </head>
+
 <body>
 
 <!--header-->
@@ -26,51 +27,50 @@
 
 <!--contenido-->
 <div class="contenido">
-    <center><h3>Calendario de actividades</h3></center>
+    <center><h3>Reportes</h3></center>
 
-    <ons-card onclick="window.location.href = 'calendario.html?id_event='"
+    <button class="button--large--cta" style="width: 95%; margin: 0 auto; background: rgb(0,171,156)"
+            onclick="window.location.href = 'crear_reporte.html'">Crear reporte
+    </button>
+
+    <ons-card onclick="window.location.href = 'reportes.html?id_report='"
               style="background: linear-gradient(to bottom, #e0e0e0, #c4c4c4)">
         <center>
-            <b>Invasión Troyana</b>
-            <br><b>24 de Noviembre</b>
+            <b class="card__title">Arduino UNO perdido</b>
+            <b class="card__content">28 de Noviembre</b>
         </center>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labor...</p>
+        <p class="card__content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labor...</p>
     </ons-card>
 
-    <ons-card onclick="window.location.href = 'calendario.html?id_event='"
+    <ons-card onclick="window.location.href = 'reportes.html?id_report='"
               style="background: linear-gradient(to bottom, #e0e0e0, #c4c4c4)">
         <center>
-            <b>Carritos Troyanos</b>
-            <br><b>27 de Noviembre</b>
+            <b class="card__title">Coche mal estacionado</b>
+            <b class="card__content">27 de Noviembre</b>
         </center>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labor...</p>
+        <p class="card__content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labor...</p>
     </ons-card>
 
-    <ons-card onclick="window.location.href = 'calendario.html?id_event='"
+    <ons-card onclick="window.location.href = 'reportes.html?id_report='"
               style="background: linear-gradient(to bottom, #e0e0e0, #c4c4c4)">
         <center>
-            <b>Congreso Nacional de Computación</b>
-            <br><b>21 de Noviembre</b>
+            <b class="card__title">Avistamiento de fantasma</b>
+            <b class="card__content">27 de Noviembre</b>
         </center>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labor...</p>
+        <p class="card__content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labor...</p>
     </ons-card>
 
-    <ons-card onclick="window.location.href = 'calendario.html?id_event='"
+    <ons-card onclick="window.location.href = 'reportes.html?id_report='"
               style="background: linear-gradient(to bottom, #e0e0e0, #c4c4c4)">
         <center>
-            <b>Taller de Jutsus</b>
-            <br><b>3 de Diciembre</b>
+            <b class="card__title">Coche mal estacionado</b>
+            <b class="card__content">27 de Noviembre</b>
         </center>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labor...</p>
-    </ons-card>
-
-    <ons-card onclick="window.location.href = 'calendario.html?id_event='"
-              style="background: linear-gradient(to bottom, #e0e0e0, #c4c4c4)">
-        <center>
-            <b>Taller Avanzado de Jutsus</b>
-            <br><b>7 de Diciembre</b>
-        </center>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labor...</p>
+        <p class="card__content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labor...</p>
     </ons-card>
 </div>
 <!--end contenido-->
