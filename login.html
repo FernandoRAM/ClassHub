@@ -3,41 +3,43 @@
 <head>
 	<title>Login</title>
 	<meta charset="utf-8">
+	<script src="js/funciones.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/estilos.css">
 	<link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
- 	 <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
-  	<script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
+ 	 <link rel="stylesheet" href="https://unpkg.com/onsenui/css/old-onsen-css-components.min.css">
+  	<script src="https://unpkg.com/onsenui/js/onsenui.js"></script>
 
 </head>
 <body>	
 
 	<center>
-		<img src="logo.jpg"><br>
+		<img src="logo.png"><br>
 		<h1>Inicia Sesión</h1><br><br>
 
-		<form action="" method="POST">
-		  <div class="form-group col-md-4">
+		
+		  <form>
 
 		    <p>
 
-     			 <ons-input id="username" modifier="material" placeholder="Expediente" float ng-model="page.username"></ons-input>
+     			 <ons-input id="expediente" modifier="material" placeholder="Expediente" style="font-size: 50px;" float ng-model="page.username"></ons-input>
 
     		</p>
 
     		 <p>
 
-     			 <ons-input id="pass" modifier="material" placeholder="Contraseña" float ng-model="page.pass"></ons-input>
+     			 <ons-input id="pass" modifier="material" placeholder="Contraseña" style="font-size: 50px;" float ng-model="page.pass"></ons-input>
 
     		</p>
     		
 			<p style="margin-top: 30px;">
 
-	      		<ons-button ng-click="page.login()">Iniciar Sesion</ons-button>
+	      		<ons-button ng-click="page.login()" onclick="login()">Iniciar Sesion</ons-button>
+	      		
 
 	    	</p>
 
-		</div>
 		</form>
+		
 	</center>
 
 </body>
