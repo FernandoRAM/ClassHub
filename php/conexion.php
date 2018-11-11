@@ -2,10 +2,10 @@
 
 class Funciones {
 	public function conectar() {
-		$host = "classhub2.000webhostapp.com";
-		$user = "id7692427_fernando";
-		$pass = "123..";
-		$db = "id7692427_classhub";
+		$host = "localhost";
+		$user = "root";
+		$pass = "";
+		$db = "classhub";
 
 		$conexion = new mysqli($host, $user, $pass, $db);
 
