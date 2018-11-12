@@ -3,7 +3,7 @@
 * @author: Mendoza Burgos Rubén Andrés (ramby)
 *
 * El objetivo de esta función es mandar los datos 'hasheados' antes de que lleguen al servidor.
-* El resultado de esta función es un hash de 18 caracteres
+* El resultado de esta función es un hash de 24 caracteres
 *
 * */
 
@@ -76,7 +76,7 @@ function pre_hash(str) {
     }
 
     /*
-    * Se generan los últimos 6 caracteres para nuestra función hash, se hace algo parecido al paso anterior pero
+    * Se generan los siguientes 6 caracteres para nuestra función hash, se hace algo parecido al paso anterior pero
     * esta vez haciendo uso del número 'e' y la superficie del Vaticano (en yardas cuadradas).
     *
     * */
@@ -98,9 +98,31 @@ function pre_hash(str) {
     }
 
     /*
-    * Se retorna el resultado de la función :)
+    * Se generan los últimos 6 caracteres para nuestra función hash, se hace algo parecido al paso anterior pero
+    * esta vez haciendo uso de la función seno y la superficie de Mongolia (en kilómetros cuadradas).
     *
     * */
 
+    RANDOM_CHARS = ['1', '0', 'm', 'z', 'x', '8', '3', 'h', 'i', 'e'];
+    MON_SURF = 238397;
+    DEMIRANDOM = (Math.abs(Math.sin(MON_SURF * ascii_sum(str)))).toString();
+    DEMI_INDEXES = DEMIRANDOM.split('');
+    NEW_INDEXES = new Array();
+
+    for (i = 0; i < DEMI_INDEXES.length; i++) {
+        if (!(DEMI_INDEXES[i] === '.')) {
+            NEW_INDEXES.push(parseInt(DEMI_INDEXES[i]));
+        }
+    }
+
+    for (i = 0; i < 6; i++) {
+        FINAL_HASH += RANDOM_CHARS[NEW_INDEXES[i]];
+    }
+
+    /*
+    * Se retorna el resultado de la función :)
+    *
+    * */
+    
     return FINAL_HASH;
 }
