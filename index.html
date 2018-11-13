@@ -1,14 +1,16 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="UTF-8">
+	<title>Inicio</title>
+	<meta charset="utf-8">
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
-  <link rel="stylesheet" href="https://unpkg.com/onsenui/css/old-onsen-css-components.min.css">
-  <link rel="stylesheet" href="../css/estilos.css">
+ <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" type="text/css" href="css/estilos.css">
+	<link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
+ 	 <link rel="stylesheet" href="https://unpkg.com/onsenui/css/old-onsen-css-components.min.css">
   <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
+  <script src="js/funciones.js"></script>
 </head>
 <body>
 
@@ -24,7 +26,7 @@
   </div>
 </div>
 	
-<div class="contenido" >
+<div id="contenido" class="contenido" >
 
   <!-- Carrusel -->
   <ons-carousel fullscreen swipeable auto-scroll overscrollable id="carousel">
@@ -72,28 +74,28 @@
 
 
 <div class="tabbar">
-  <label class="tabbar__item">
+  <label class="tabbar__item" onclick="calendario()">
     <input type="radio" name="tabbar-b" checked="checked">
     <button class="tabbar__button">
       <i class="zmdi zmdi-calendar zmdi-hc-lg"></i>
     </button>
   </label>
 
-  <label class="tabbar__item">
+  <label class="tabbar__item" onclick="foro()">
     <input type="radio" name="tabbar-b" checked="checked">
     <button class="tabbar__button">
       <i class="zmdi zmdi-comments zmdi-hc-lg"></i>
     </button>
   </label>
 
-  <label class="tabbar__item">
+  <label class="tabbar__item" onclick="horarios()">
     <input type="radio" name="tabbar-b" checked="checked">
     <button class="tabbar__button">
       <i class="zmdi zmdi-time zmdi-hc-lg"></i>
     </button>
   </label>
 
-  <label class="tabbar__item">
+  <label class="tabbar__item" onclick="convocatorias()">
     <input type="radio" name="tabbar-b">
     <button class="tabbar__button">
       <i class="zmdi zmdi-money zmdi-hc-lg"></i>
