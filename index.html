@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html onload="test()">
 <head>
 	<title>Inicio</title>
 	<meta charset="utf-8">
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<link rel="stylesheet" type="text/css" href="css/estilos.css">
+  <link rel="stylesheet" type="text/css" href="css/estilos.css">
+	<link rel="stylesheet" type="text/css" href="css/estilosTabla.css">
 	<link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
  	 <link rel="stylesheet" href="https://unpkg.com/onsenui/css/old-onsen-css-components.min.css">
   <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
@@ -55,19 +56,38 @@
 
     <!-- Item Carrusel (Clases) -->
     <ons-carousel-item>
-      <ons-card style="height: 95%; margin-top: 15px;">
+      <ons-card style="height: 95%; margin-top: 15px; overflow-y: scroll;">
         <!-- Item tarjeta -->
         <center><h4>Horarios de Clases</h4>
-            <ons-search-input placeholder="Busca tu clase..."></ons-search-input>
+            <ons-search-input placeholder="Busca tu clase..."></ons-search-input><br><br>
+
+            <div id="clasesBuscadas">
+
+            </div>
         </center>
       </ons-card>
     </ons-carousel-item>
 
+     <!-- Item Carrusel (Tutores) -->
+  <ons-carousel-item>
+      <ons-card style="height: 95%; margin-top: 15px; overflow-y:scroll;">
+        <center><h4>Tutores</h4></center><br><br>
+          <ons-card>
+            <span>Eduardo Aguirre Caracheo<i class='zmdi zmdi-chevron-right zmdi-hc-lg' style='float:right;'></i></span> 
+          </ons-card>
+
+          <ons-card>
+            <span>Diego Ibarra Corona<i class='zmdi zmdi-chevron-right zmdi-hc-lg' style='float:right;'></i></span> 
+          </ons-card>
+
+          <ons-card>
+            <span>Alejandro Vargas Díaz<i class='zmdi zmdi-chevron-right zmdi-hc-lg' style='float:right;'></i></span> 
+          </ons-card> 
+
+        </ons-card>
+      </ons-card>
+    </ons-carousel-item>
   </ons-carousel>
-
- 
-
-
 
 </div>
 

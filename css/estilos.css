@@ -25,10 +25,17 @@ img {
 }
 
 h1 {
-    color: white;
+    color: black;
 }
 
 button {
     background-color: #FE9900;
     color: white;
+}
+.fotoTutor{
+    height: 80px;
+    width: 80px;
+    border-radius: 100px;
+    margin-left: 15px;
+
 }

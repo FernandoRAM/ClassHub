@@ -1,3 +1,4 @@
+
 function login(){
 
 	 var exp = document.getElementById('expediente').value;
@@ -156,10 +157,34 @@ function horarios(){
 	      "<ons-card style='height: 95%; margin-top: 15px;'>"+
 	        "<!-- Item tarjeta -->"+
 	       " <center><h4>Horarios de Clases</h4>"+
-	           " <ons-search-input placeholder='Busca tu clase...'></ons-search-input>"+
+	           " <ons-search-input placeholder='Busca tu clase...'></ons-search-input><br><br>"+
+             "<div id='clasesBuscadas'>"+
+              
+            "</div>"+
+
 	        "</center>"+
 	      "</ons-card>"+
 	   " </ons-carousel-item>"+
+
+     "  <!-- Item Carrusel (Tutores) -->"+
+   " <ons-carousel-item>"+
+        "<ons-card style='height: 95%; margin-top: 15px; overflow-y:scroll;'>"+
+         " <center><h4>Tutores</h4></center><br><br>"+
+           " <ons-card>"+
+             " <span>Eduardo Aguirre Caracheo<i class='zmdi zmdi-chevron-right zmdi-hc-lg' style='float:right;'></i></span> "+
+           " </ons-card>"+
+
+           " <ons-card>"+
+            "  <span>Diego Ibarra Corona<i class='zmdi zmdi-chevron-right zmdi-hc-lg' style='float:right;'></i></span> "+
+           " </ons-card>"+
+
+           " <ons-card>"+
+              "<span>Alejandro Vargas Díaz<i class='zmdi zmdi-chevron-right zmdi-hc-lg' style='float:right;'></i></span> "+
+           " </ons-card> "+
+
+          "</ons-card>"+
+       " </ons-card>"+
+     " </ons-carousel-item>"+
 
 	  "</ons-carousel>";
 
@@ -180,7 +205,9 @@ function foro(){
 		 "<!-- Lista de discusiones de usuario -->"+
 	  
 	  "<center><h4>Mis Discusiones</h4></center>"+
-	 
+	     "<ons-fab position='bottom right'  style='bottom: 60px;'> "+
+         " <ons-icon icon='md-plus'></ons-icon> "+
+    " </ons-fab>"+
 	  "  <!-- Item -->"+
 	 "   <ons-card>"+
 	     "<span>Título genérico<i class='zmdi zmdi-chevron-right zmdi-hc-lg' style='float:right;'></i></span> "+
@@ -197,7 +224,9 @@ function foro(){
 	   " <!-- Item -->"+
 	   " <ons-card>"+
 	     "<span>Título genérico<i class='zmdi zmdi-chevron-right zmdi-hc-lg' style='float:right;'></i></span> "+
-	   "</ons-card>";
+
+	   "</ons-card>"
+     ;
 
 	    document.getElementById('contenido').innerHTML = '';
  		document.getElementById('contenido').innerHTML = foro;
@@ -214,7 +243,7 @@ function calendario(){
 
 		"<center><h3>Calendario de actividades</h3></center>"+
 
-   " <ons-card onclick='window.location.href = 'calendario.html?id_event='' style='background: linear-gradient(to bottom, #e0e0e0, #c4c4c4)'>"+
+   " <ons-card onclick='window.location.href = 'calendario.html?id_event='' >"+
        " <center>"+
            " <b>Invasión Troyana</b>"+
            " <br><b>24 de Noviembre</b>"+
@@ -222,7 +251,7 @@ function calendario(){
         "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labor...</p>"+
    " </ons-card>"+
 
-   " <ons-card onclick='window.location.href = 'calendario.html?id_event='' style='background: linear-gradient(to bottom, #e0e0e0, #c4c4c4)'>"+
+   " <ons-card onclick='window.location.href = 'calendario.html?id_event='' >"+
        " <center>"+
            " <b>Carritos Troyanos</b>"+
            " <br><b>27 de Noviembre</b>"+
@@ -230,7 +259,7 @@ function calendario(){
        " <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labor...</p>"+
     "</ons-card>"+
 
-   " <ons-card onclick='window.location.href = 'calendario.html?id_event=''style='background: linear-gradient(to bottom, #e0e0e0, #c4c4c4)'>"+
+   " <ons-card onclick='window.location.href = 'calendario.html?id_event=''>"+
        " <center>"+
             "<b>Congreso Nacional de Computación</b>"+
             "<br><b>21 de Noviembre</b>"+
@@ -238,7 +267,7 @@ function calendario(){
         "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labor...</p>"+
     "</ons-card>"+
 
-    "<ons-card onclick='window.location.href = 'calendario.html?id_event=''style='background: linear-gradient(to bottom, #e0e0e0, #c4c4c4)'>"+
+    "<ons-card onclick='window.location.href = 'calendario.html?id_event=''>"+
         "<center>"+
             "<b>Taller de Jutsus</b>"+
             "<br><b>3 de Diciembre</b>"+
@@ -246,7 +275,7 @@ function calendario(){
        " <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labor...</p>"+
     "</ons-card>"+
 
-   " <ons-card onclick='window.location.href = 'calendario.html?id_event='' style='background: linear-gradient(to bottom, #e0e0e0, #c4c4c4)'>"+
+   " <ons-card onclick='window.location.href = 'calendario.html?id_event='' >"+
        " <center>"+
             "<b>Taller Avanzado de Jutsus</b>"+
            " <br><b>7 de Diciembre</b>"+
