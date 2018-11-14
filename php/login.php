@@ -11,6 +11,7 @@
 	$select = "SELECT NomUsuario FROM usuario WHERE expediente = '$exp' AND Contrasena = '$pass'";
 	$res = $conexion->query($select);
 	
+	
 	if(mysqli_num_rows($res)>0){
 		session_start();
 		$resultado = $res->fetch_object();
