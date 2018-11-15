@@ -46,6 +46,8 @@ Autor: Fernando Rincón
 Versión: 1.0
 */
 
+
+
 /*
 * Función: pre_hash(str)
 * @author: Mendoza Burgos Rubén Andrés (ramby)
@@ -339,16 +341,16 @@ function foro(){
 		 "<!-- Lista de discusiones de usuario -->"+
 	  
 	  "<center><h4>Mis Discusiones</h4></center>"+
-	     "<ons-fab position='bottom right'  style='bottom: 60px;'> "+
+	     "<ons-fab position='bottom right'  style='bottom: 60px;' onclick='nuevoForo()'> "+
          " <ons-icon icon='md-plus'></ons-icon> "+
     " </ons-fab>"+
 	  "  <!-- Item -->"+
 	 "   <ons-card>"+
-	     "<span>Título genérico<i class='zmdi zmdi-chevron-right zmdi-hc-lg' style='float:right;'></i></span> "+
+	     "<span>Llaves perdidas<i class='zmdi zmdi-chevron-right zmdi-hc-lg' style='float:right;'></i></span> "+
 	  " </ons-card>"+
 	  "  <!-- Item -->"+
 	 "   <ons-card>"+
-	     "<span>Título genérico<i class='zmdi zmdi-chevron-right zmdi-hc-lg' style='float:right;'></i></span> "+
+	     "<span>Ayuda POO<i class='zmdi zmdi-chevron-right zmdi-hc-lg' style='float:right;'></i></span> "+
 	  " </ons-card>"+
 
 	" <!-- Lista de discusiones de todos -->"+
@@ -357,7 +359,7 @@ function foro(){
 	  
 	   " <!-- Item -->"+
 	   " <ons-card>"+
-	     "<span>Título genérico<i class='zmdi zmdi-chevron-right zmdi-hc-lg' style='float:right;'></i></span> "+
+	     "<span>Celular Olvidado<i class='zmdi zmdi-chevron-right zmdi-hc-lg' style='float:right;'></i></span> "+
 
 	   "</ons-card>"
      ;
@@ -427,8 +429,9 @@ Autor: Fernando Rinco3
 Versión: 1.0
 */
 
-function reportes(){
+function nuevoForo(){
 
+  console.log('No me piques we'); 
 	
 
 		
