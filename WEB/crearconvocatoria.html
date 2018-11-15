@@ -1,61 +1,64 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Crear Convocatoria</title>
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-	<link rel="stylesheet"  href="css/talacha.css">
-	<meta name="viewport" content="width = device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0">
-
+    <title>Crear Convocatoria</title>
+    <meta name="viewport" content="width = device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/talacha.css">
 </head>
 <body>
-	<header>
-		<div class="container">
-			 <div class="señal">
-  				  <a  href="#" role="button"> <img src="xa/atras.png" style="width: 40px"></a>
-  				  <a  href="#" role="button"> <img src="xa/inicio.png" style="width: 40px"></a>
-			 </div>	
-			 <div class="nom">
-			 	<h1>Crear convocatoria</h1>
-			 </div>
-			 <div class="perfil">
-			 	<img src="xa/cara.png" alt="Responsive image" class="img-circle" style=" width: 50px">
-			 	<label>	Juanita Perez</label>
-			 </div>
-		</div>
-	</header>
-	<br>
-	<br>
-	<form class="container">
-		<h3>Nombre de la convocatoria</h3>
-  		<div>
-  			<div class="row">
- 				 <div class="col-xs-6">
-   					 <input type="text" class="form-control" placeholder="Escribe el nombre">
-				 </div>
-			</div>
-  		</div>
-  		<h3>Tipo de convocatoria</h3>
-  		<div>
-  			<div class="row">
- 				 <div class="col-xs-6">
-   					 <input type="text" class="form-control" placeholder="Escribe el nombre">
-				 </div>
-			</div>
-  		</div>	
-  		<h3>Descripcion</h3>
-  		<div>
-  			<div class="row">
- 				 <div class="col-xs-6">
-   					 <textarea class="form-control" rows="3" placeholder="Esto es una convocatoria que se va modificar"></textarea>
-				 </div>
-			</div>
-  		</div>	
-	</form>
-	<div id="foto">
-		<img src="xa/ima.jpg" class="img-responsive" alt="Responsive image">
-	</div>
+<header>
+    <div class="container">
+        <h1>Crear Convocatoria</h1>
+    </div>
+</header>
 
-		<button id="boto" type="button" class="btn btn-primary btn-lg">Publicar convocatoria</button>
+<br>
+<br>
+<br>
+
+<div class="container">
+    <form action="#" class="form-group">
+        <div class="row">
+            <div class="col-lg-7">
+                <label>Nombre de la convocatoria</label>
+                <input type="text" placeholder="Ingresa el nombre de la convocatoria" class="form-control"
+                       style="width: 100%">
+
+                <br><br>
+
+                <label>Tipo de convocatoria</label>
+                <select name="" id="" class="form-control">
+                    <option value="0">Beca</option>
+                    <option value="1">Curso</option>
+                    <option value="2">Taller</option>
+                </select>
+
+                <br><br>
+
+                <label>Descripción</label>
+                <textarea class="form-control" style="resize: vertical"></textarea>
+            </div>
+
+            <div class="col-lg-1"></div>
+
+            <div class="col-lg-4">
+                <label for="">
+                    <img src="img/up_img.png" alt="">
+                </label>
+
+                <input type="file" class="form-control-file">
+
+                <br>
+
+                <input type="submit" class="btn btn-primary" style="width: 100%" value="Crear">
+            </div>
+        </div>
+
+    </form>
+</div>
+</body>
+</html>
 <script src="js/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
 </body>
