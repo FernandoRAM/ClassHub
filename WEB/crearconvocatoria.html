@@ -3,8 +3,10 @@
 <head>
     <title>Crear Convocatoria</title>
     <meta name="viewport" content="width = device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv='cache-control' content='no-cache'>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/talacha.css">
+    <meta charset="utf-8">
 </head>
 <body>
 <header>
@@ -18,26 +20,26 @@
 <br>
 
 <div class="container">
-    <form action="#" class="form-group">
+    <form action="php/crearConv.php" method="POST" class="form-group" enctype="multipart/form-data">
         <div class="row">
             <div class="col-lg-7">
                 <label>Nombre de la convocatoria</label>
-                <input type="text" placeholder="Ingresa el nombre de la convocatoria" class="form-control"
+                <input type="text" placeholder="Ingresa el nombre de la convocatoria" class="form-control" name="name"
                        style="width: 100%">
 
                 <br><br>
 
                 <label>Tipo de convocatoria</label>
-                <select name="" id="" class="form-control">
-                    <option value="0">Beca</option>
-                    <option value="1">Curso</option>
-                    <option value="2">Taller</option>
+                <select name="type" id="type" class="form-control">
+                    <option value="Beca">Beca</option>
+                    <option value="Curso">Curso</option>
+                    <option value="Taller">Taller</option>
                 </select>
 
                 <br><br>
 
                 <label>Descripción</label>
-                <textarea class="form-control" style="resize: vertical"></textarea>
+                <textarea class="form-control" name="description" style="resize: vertical"></textarea>
             </div>
 
             <div class="col-lg-1"></div>
@@ -47,11 +49,11 @@
                     <img src="img/up_img.png" alt="">
                 </label>
 
-                <input type="file" class="form-control-file">
+                <input type="file" class="form-control-file" name="image">
 
                 <br>
 
-                <input type="submit" class="btn btn-primary" style="width: 100%" value="Crear">
+                <input type="submit" class="btn btn-primary" name="submit" style="width: 100%" value="Crear">
             </div>
         </div>
 
@@ -61,5 +63,6 @@
 </html>
 <script src="js/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script src="js/funciones.js"></script>
 </body>
 </html>
