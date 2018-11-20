@@ -6,7 +6,7 @@ $con = conectar();
 
 //Validar si estan todos los campos
 
-$imagename=$_FILES["image"]["name"];;
+$imagename=$_FILES["image"]["name"];
 
 alerta($_POST['name']."nombre");
 if (isset($_POST['name'])&& isset($_POST['type']) && isset($_POST['description'])) {
