@@ -1,24 +1,56 @@
 <?php
     session_start();
 	require 'DataBase.php';
-	$message ='';
-	  
-	if (!empty($_POST['NomUsuario']) && !empty($_POST['Contrasena'])) {
-		$records = $conn->prepare('SELECT idUsuario,NomUsuario, Contrasena FROM usuario WHERE NomUsuario=:NomUsuario');
-		$records->bindParam(':NomUsuario',$_POST['NomUsuario']);
-		$records->execute();
-		$results = $records->fetch(PDO::FETCH_ASSOC);
 
-		$message = '';
+	# Instanciar la clase funciones
+	$funciones = new Funciones();
 
-		if (count($results) > 0 && password_verify($_POST['Contrasena'], $results['Contrasena'])) {
-			
-			header('location: /Class-Login');
-		}else{
-			$message = 'No coinciden los datos';
+	# Mandamos llamar el metodo conectar() del objeto funciones
+	$conexion = $funciones->conectar();
+
+	# INICIO DE SESIÓN
+	if (isset($_POST['btnLogin'])) {
+		$user = $_POST['NomUsuario'];
+		$pass = $_POST['Contrasena'];
+
+		$select = "SELECT COUNT(*) AS total
+					FROM usuario
+					WHERE username = '{$user}'
+					AND pass = md5('{$pass}');";
+
+		# Mandamos la consulta a la BD
+		$resultado = $conexion->query($select);
+
+		# Recuperamos el resultado de la consulta
+		$total = $resultado->fetch_assoc();
+
+		if($total['total'] == 0){
+			echo "Usuario o contraseña incorrectos<br />";
+		} else {
+			# echo "Puedes iniciar sesión<br />";
+			# Buscamos los datos del usuario que inicio sesión
+			$verUser = "SELECT idUsuario, NomUsuario FROM usuario
+						WHERE username = '{$user}'
+						AND pass = md5('{$pass}');";
+
+			# Mandamos la consulta a la BD
+			$resUser = $conexion->query($verUser);
+
+			# Recuperamos el resultado de la consulta
+			$res = $resUser->fetch_assoc();
+
+			$_SESSION['id'] = $res['idUsuario'];
+			$_SESSION['user'] = $res['NomUsuario'];
+
+			echo "ID> {$_SESSION['id']}<br />";
+			echo "Username> {$_SESSION['user']}<br />";
+
+			# Redigiremos al usuario a la página 
+			#header("Location: timeline.php");		
 		}
 	}
-  ?>
+	
+ ?>
 
 <!DOCTYPE html>
 <html>
@@ -29,11 +61,7 @@
 	<link rel="shortcut icon" href="Assets/Logo-Class.ico" />
 </head>
 <body>
-	 <?php if (!empty($message)): ?>
-		<p align="center"><?= $message ?></p>
-	<?php endif;?>
-
-	 <br>
+	<br>
 	<br>
 	<br>
 	<br>
