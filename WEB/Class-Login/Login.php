@@ -1,7 +1,7 @@
 <?php
     session_start();
-	require 'DataBase.php';
-
+	require_once('DataBase.php');
+	
 	# Instanciar la clase funciones
 	$funciones = new Funciones();
 
