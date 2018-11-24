@@ -1,54 +1,27 @@
 <?php
     session_start();
-	require_once('DataBase.php');
 	
-	# Instanciar la clase funciones
-	$funciones = new Funciones();
+	if (isset($_SESSION['user_id'])) {
+    header('Location: /php-login');
+  }
+  require 'DataBase.php';
 
-	# Mandamos llamar el metodo conectar() del objeto funciones
-	$conexion = $funciones->conectar();
+  if (!empty($_POST['NomUsuario']) && !empty($_POST['Contrasena'])) {
+    $records = $conn->prepare('SELECT idUsuario, NomUsuario, Contrasena FROM usuario WHERE NomUsuario = :NomUsuario');
+    $records->bindParam(':NomUsuario', $_POST['NomUsuario']);
+    $records->execute();
+    $results = $records->fetch(PDO::FETCH_ASSOC);
 
-	# INICIO DE SESIÓN
-	if (isset($_POST['btnLogin'])) {
-		$user = $_POST['NomUsuario'];
-		$pass = $_POST['Contrasena'];
+    $message = '';
 
-		$select = "SELECT COUNT(*) AS total
-					FROM usuario
-					WHERE username = '{$user}'
-					AND pass = md5('{$pass}');";
-
-		# Mandamos la consulta a la BD
-		$resultado = $conexion->query($select);
-
-		# Recuperamos el resultado de la consulta
-		$total = $resultado->fetch_assoc();
-
-		if($total['total'] == 0){
-			echo "Usuario o contraseña incorrectos<br />";
-		} else {
-			# echo "Puedes iniciar sesión<br />";
-			# Buscamos los datos del usuario que inicio sesión
-			$verUser = "SELECT idUsuario, NomUsuario FROM usuario
-						WHERE username = '{$user}'
-						AND pass = md5('{$pass}');";
-
-			# Mandamos la consulta a la BD
-			$resUser = $conexion->query($verUser);
-
-			# Recuperamos el resultado de la consulta
-			$res = $resUser->fetch_assoc();
-
-			$_SESSION['id'] = $res['idUsuario'];
-			$_SESSION['user'] = $res['NomUsuario'];
-
-			echo "ID> {$_SESSION['id']}<br />";
-			echo "Username> {$_SESSION['user']}<br />";
-
-			# Redigiremos al usuario a la página 
-			#header("Location: timeline.php");		
-		}
-	}
+    if (count($results) > 0 && password_verify($_POST['Contrasena'] , $results['Contrasena'])) {
+      $_SESSION['user_id'] = $results['id'];
+	#Cambiar el "/Class-Login por la pagina a la cual se va a redirigir cuando inicien sesion.
+      header("Location: /Class-Login");
+    } else {
+      $message = 'Sorry, those credentials do not match';
+    }
+  }
 	
  ?>
 
