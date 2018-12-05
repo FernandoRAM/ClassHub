@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta charset="utf-8">
+  <title>Tutores</title>
+
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="js/alertifyjs/css/alertify.css">
+  <link rel="stylesheet" type="text/css" href="js/alertifyjs/css/themes/default.css">
+  <link rel="stylesheet" type="text/css" href="js/select2/css/select2.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  
+  <script src="js/jquery.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="js/alertifyjs/alertify.js"></script>
+  <script src="js/select2/js/select2.js"></script>
+
+</head>
+<body>
+  <!----------------- Inicio de NAVBAR ---------------------->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Tutores <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="Reportes.html">Reportes</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="eventos.html">Eventos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="Convocatorias.html">Convocatorias</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<!-- Fin de navbar-->
+  <div class="container">
+    <div id="tabla"></div>
+  </div>
+
+  <!-- Modal para registros nuevos -->
+
+<div class="modal fade" id="modal-nuevoTutor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+     <div class="modal-header">
+          <h4 class="modal-title" id="tituloEvento">Crear Tutor</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> 
+        </div>
+        <form enctype="multipart/form-data" id="formCrear" method="post">
+      <div class="modal-body">
+        <input type="text" hidden="" name="idConv">
+        <div class="form-group">
+          <label>Nombre del tutor</label>
+          <input type="text" name="nombreNew" class="form-control input-sm">
+        </div>
+          <label>Horario</label>
+          <div class="row">
+            <div class="col-sm">
+                <input type="time" name="horaInicioNew" class="form-control input-sm">
+            </div>
+            <div class="col-sm">
+              <input type="time" name="horaFinNew" class="form-control input-sm">
+            </div>
+          </div>
+        <div class="form-group">
+          <label>E-mail</label>
+          <input type="email" class="form-control" name="emailTutorNew">
+        </div>
+        <div class="form-group">
+          <label>Numero de Cúbiculo</label>
+          <input type="text" name="numCubiculoNew" class="form-control input-sm">
+        </div>
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" name="imageCrear">
+          <label class="custom-file-label" for="customFile">Seleccione un archivo</label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <input type="submit" class="btn btn-primary mx-auto" data-dismiss="modal" 
+          id="crearTutor" value="Crear">
+        </input>
+       </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal para edicion de tutor -->
+
+<div class="modal fade" id="modal-edicion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+     <div class="modal-header">
+          <h4 class="modal-title" id="tituloEvento">Editar Tutor</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> 
+        </div>
+      <div class="modal-body">
+        <input type="text" hidden="" id="idConv" name="">
+        <div class="form-group">
+          <label>Nombre del tutor</label>
+          <input type="text" name="" id="nombreEd" class="form-control input-sm">
+        </div>
+        <div class="form-group">
+          <img src="" class="rounded mx-auto d-block" id="imgTutor">
+        </div>
+          <label>Horario</label>
+          <div class="row">
+            <div class="col-sm">
+                <input type="time" id="horaInicioEd" class="form-control input-sm">
+            </div>
+            <div class="col-sm">
+              <input type="time" id="horaFinEd" class="form-control input-sm">
+            </div>
+          </div>
+        <div class="form-group">
+          <label>E-mail</label>
+          <input type="email" name="" class="form-control" id="emailTutorEd">
+        </div>
+        <div class="form-group">
+          <label>Numero de Cúbiculo</label>
+          <input type="text" name="" id="numCubiculoEd" class="form-control input-sm">
+        </div>
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" id="imageNew">
+          <label class="custom-file-label" for="customFile">Seleccione un archivo</label>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal" id="actualizardatos">
+        Actualizar
+        </button>
+       
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal para ver informacion detallada de tutor -->
+<div class="modal fade" id="modal-descripcion" role="dialog" aria-labelledby="exampleModalLongTitle">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+       <div class="modal-header">
+          <h4 class="modal-title" id="nombreTutor"></h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> 
+        </div>
+        <div class="modal-body">
+        <!-- Horario-->
+        <div class="container">
+        <div class="form-group">
+          <img src="C:/xampp/htdocs/Ing_Software/ClassHub/WEB/img/fondo.jpg" class="rounded mx-auto d-block" id="imgTutor">
+        </div>
+          <h5 class="mx-auto">Horario</h5>
+          <div class="row">
+            <div class="col-sm">
+                <input type="time" id="horaInicio" class="form-control input-sm">
+            </div>
+            <div class="col-sm">
+              <input type="time" id="horaFin" class="form-control input-sm">
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-9">
+            <h5>Email</h5>
+        </div>
+          <div class="container mr-2 ml-2">
+              <p id="emailTutor"></p>
+          </div>
+          <div class="col-sm-9">
+            <h5>Numero de Cúbiculo</h5>
+        </div>
+          <div class="container mr-2 ml-2">
+              <p id="numCubiculo"></p>
+          </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary mx-auto" data-dismiss="modal"
+            id="actualizarStatus">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+</body>
+</html>
+<script src="js/tutores/funciones.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#tabla').load('php/Tutores/tabla.php');
+    $('#buscador').load('php/Tutores/buscador.php');
+  });
+</script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#crearTutor').click(function(){
+      nombre=$('#nombreNew').val();
+      horaInicio=$('#horaInicioNew').val();
+      horaFin=$('#horaFinNew').val();
+      emailTutor=$('#emailTutorNew').val();
+      numCubiculo=$('#numCubiculoNew').val();
+      crearTutor();
+      //
+    });
+
+    $('#actualizardatos').click(function(){
+      actualizaDatos();
+    });
+
+  });
+</script>

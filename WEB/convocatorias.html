@@ -1,11 +1,8 @@
-<?php 
-session_start();
-unset($_SESSION['consulta']);
- ?>
 <!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta charset="utf-8">
   <title>Convocatorias</title>
 
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
@@ -13,7 +10,7 @@ unset($_SESSION['consulta']);
   <link rel="stylesheet" type="text/css" href="js/alertifyjs/css/themes/default.css">
   <link rel="stylesheet" type="text/css" href="js/select2/css/select2.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-
+  
   <script src="js/jquery.js"></script>
   <script src="js/bootstrap.js"></script>
   <script src="js/alertifyjs/alertify.js"></script>
@@ -22,7 +19,7 @@ unset($_SESSION['consulta']);
 </head>
 <body>
   <!----------------- Inicio de NAVBAR ---------------------->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">Navbar</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -30,23 +27,22 @@ unset($_SESSION['consulta']);
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#">Convocatorias <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
+        <a class="nav-link" href="Reportes.html">Reportes</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
+        <a class="nav-link" href="eventos.html">Eventos</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
+        <a class="nav-link" href="tutores.html">Tutores</a>
       </li>
     </ul>
   </div>
 </nav>
 <!-- Fin de navbar-->
   <div class="container">
-    <div id="buscador"></div>
     <div id="tabla"></div>
   </div>
 
@@ -56,9 +52,9 @@ unset($_SESSION['consulta']);
 <div class="modal fade" id="modal-nuevoEvento" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <h4 class="modal-title" id="myModalLabel">Crear Convocatoria</h4>
       <div class="modal-header">
-        <button type="button" class="close float-left" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> 
+          <h4 class="modal-title" id="tituloEvento">Crear Convocatoria</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> 
       </div>
       <div class="modal-body">
         <input type="text" hidden="" id="idEvento" name="">
@@ -101,12 +97,12 @@ unset($_SESSION['consulta']);
 <div class="modal fade" id="modal-edicion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <h4 class="modal-title" id="myModalLabel">Editar Convocatoria</h4>
-      <div class="modal-header">
-        <button type="button" class="close float-left" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> 
-      </div>
+     <div class="modal-header">
+          <h4 class="modal-title" id="tituloEvento">Editar Convocatoria</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> 
+        </div>
       <div class="modal-body">
-        <input type="text" hidden="" id="idEvento" name="">
+        <input type="text" hidden="" id="idConv" name="">
         <div class="form-group">
           <label>Nombre</label>
           <input type="text" name="" id="nombreEd" class="form-control input-sm">
@@ -121,6 +117,10 @@ unset($_SESSION['consulta']);
               <option value="Beca">Beca</option>
 
             </select>
+        </div>
+        <div class="form-group">
+          <label>Fecha</label>
+          <input type="date" name="" id="fechaEd" class="form-control input-sm">
         </div>
         <div class="form-group">
           <label>Descripcion</label>
@@ -140,27 +140,44 @@ unset($_SESSION['consulta']);
     </div>
   </div>
 </div>
-<!-- Modal para ver informacion detallada de evento -->
-<div class="modal fade bd-example-modal-lg" id="model-evento" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
+<!-- Modal para ver informacion detallada de convocatoria -->
+<div class="modal fade" id="modal-descripcion" role="dialog" aria-labelledby="exampleModalLongTitle">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
-       <h4 class="modal-title" id="tituloEvento"></h4>
        <div class="modal-header">
+          <h4 class="modal-title" id="tituloConvocatoria"></h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> 
         </div>
-        <div class="form-group">
-          <label>Descripcion</label>
-          <p id="descripEvento"></p>
+        <div class="modal-body">
+        <!-- Descripcion -->
+        <div class="container">
+          <div class="row">
+            <!-- Tipo de Convocatoria -->
+            <div class="col-sm">
+              <h5 class="">Tipo:</h5>
+                <p id="tipoCon"></p>
+            </div>
+            <!-- Fecha Limite -->
+            <div class="col-sm">
+              <h5>Fecha limite:</h5>
+              <input type="date" id="fechaConvDes">
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-          <label>Tipo</label>
-          <p id="descripEvento"></p>
+        <div class="col-sm-9">
+            <h5>Descripcion</h5>
         </div>
-         <button type="button" class="btn btn-primary" data-dismiss="modal">
-          Ok
-        </button>
+          <div class="container mr-2 ml-2">
+              <p id="descCon"></p>
+          </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary mx-auto" data-dismiss="modal"
+            id="actualizarStatus">Cerrar</button>
+        </div>
+      </div>
     </div>
   </div>
+</div>
 </div>
 
 </body>
@@ -169,7 +186,6 @@ unset($_SESSION['consulta']);
 <script type="text/javascript">
   $(document).ready(function(){
     $('#tabla').load('php/Convocatorias/tabla.php');
-    $('#buscador').load('php/Convocatorias/buscador.php');
   });
 </script>
 <script type="text/javascript">

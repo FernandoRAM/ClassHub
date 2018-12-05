@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Eventos Importantes</title>
+
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="js/alertifyjs/css/alertify.css">
+  <link rel="stylesheet" type="text/css" href="js/alertifyjs/css/themes/default.css">
+  <link rel="stylesheet" type="text/css" href="js/select2/css/select2.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+  <script src="js/jquery.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="js/alertifyjs/alertify.js"></script>
+  <script src="js/select2/js/select2.js"></script>
+
+</head>
+<body>
+  <!----------------- Inicio de NAVBAR ---------------------->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Materias <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="convocatorias.html">Convocatorias</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="reportes.html">Reportes</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="tutores.html">Tutores</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="Eventos.html">Eventos</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<!-- Fin de navbar-->
+  <div class="container">
+    <div id="tabla"></div>
+  </div>
+
+  <!-- Modal para Materias nuevas -->
+<div class="modal fade" id="modal-nuevaMateria" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">  
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Agrega nueva Materia</h4>
+        <button type="button" class="close float-left" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> 
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Nombre Materia</label>
+          <input type="text" name="" id="nombreNew" class="form-control input-sm">
+        </div>
+        <div class="form-group">
+          <label>Carrera</label>
+          <input type="text" name="" id="carreraNew" class="form-control input-sm">
+        </div>
+        <div class="form-group">
+          <label>Bloque</label>
+          <input type="text" name="" id="bloqueNew" class="form-control input-sm">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal" id="guardarnuevo">
+        Crear
+        </button>
+       
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para edicion de datos -->
+
+<div class="modal fade" id="modal-edicion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Editar Materia</h4>
+        <button type="button" class="close float-left" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> 
+      </div>
+      <div class="modal-body">
+        <input type="text" hidden="" id="idMateria" name="">
+        <div class="form-group">
+          <label>Nombre Materia</label>
+          <input type="text" name="" id="nombreEd" class="form-control input-sm">
+        </div>
+        <div class="form-group">
+          <label>Carrera</label>
+          <input type="text" name="" id="carreraEd" class="form-control input-sm">
+        </div>
+        <div class="form-group">
+          <label>Bloque</label>
+          <input type="text" name="" id="bloqueEd" class="form-control input-sm">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal" id="actualizardatos">
+        Actualizar
+        </button>
+       
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+<script src="js/clases/funciones.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#tabla').load('php/clases/tabla.php');
+  });
+</script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#guardarnuevo').click(function(){
+      nombre=$('#nombreNew').val();
+      carrea=$('#carreraNew').val();
+      bloque=$('#bloqueNew').val();
+      crearMateria(nombre,carrea,bloque);
+    });
+
+    $('#actualizardatos').click(function(){
+      actualizaDatos();
+    });
+
+  });
+</script>

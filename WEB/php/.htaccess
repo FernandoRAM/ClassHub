@@ -1,4 +1,0 @@
-<IfModule mod_headers.c>
-    Header set Access-Control-Allow-Origin file:///C:/xampp/htdocs/Ing_Software/ClassHub/WEB/php/eventos.php
-    Header set Access-Control-Allow-Credentials true
-</IfModule>

@@ -8,11 +8,13 @@ function crearEvento(nombre,fecha,hora,descripcion){
 	$.ajax({
 		type:"POST",
 		url:"php/Eventos/agregarEvento.php",
+		//url:"http://classhub2.000webhostapp.com/php/Eventos/agregarEvento.php",
 		data:cadena,
 		success:function(r){
 			if (r==1) {
+				//$('#tabla').load('http://classhub2.000webhostapp.com/php/Eventos/tabla.php');
 				$('#tabla').load('php/Eventos/tabla.php');
-				$('#buscador').load('componentes/buscador.php');
+				//$('#buscador').load('http://classhub2.000webhostapp.com/php/Eventos/buscador.php');
 				alertify.success("Se han agregado con exito");
 			}else if(r==2){
 				alertify.error("La imagen que intenta subir ya existe, intente cambiando el nombre.");
@@ -22,28 +24,57 @@ function crearEvento(nombre,fecha,hora,descripcion){
 		}
 	});
 }
-function agregarDescripcion(datos){
-	d=datos.split('||');
+function agregarDescripcion(id){
 	//alert(d[4]);
 	//$('#idEvento').val(d[0]);
-	$('#tituloEvento').empty(d[1]);
-	$('#fechaEvento').empty(d[2]);
-	$('#horaEvento').empty(d[3]);
-	$('#descripEvento').empty(d[4]);
+	$('#tituloEvento').empty();
+	$('#fechaEvento').empty();
+	$('#horaEvento').empty();
+	$('#descripEvento').empty();
 	
-	$('#tituloEvento').append(d[1]);
-	$('#fechaEvento').val(d[2]);
-	$('#horaEvento').val(d[3]);
-	$('#descripEvento').text(d[4]);
+		cadena="id="+id;
+	 $.ajax({
+            type:'POST',
+            url:'php/Eventos/getDescripcion.php',
+            dataType:"json",
+            data:cadena,
+            success:function(data){
+                    $('#tituloEvento').append(data.Nombre);
+                    $('#fechaEvento').val(data.Fecha);
+                    $('#horaEvento').val(data.Hora);
+                    $('#descripEvento').append(data.Descripcion);
+                    //var logo = document.getElementById('imgConv');
+					//logo.src = "img/rm2.png";
+                    //$('#imagen').text(data.result.imagen);  
+            }
+        });
+
 }
 
-function agregaForm(datos){
-	d=datos.split('||');
-	$('#idEvento').val(d[0]);
-	$('#nombreEd').val(d[1]);
-	$('#fechaEd').val(d[2]);
-	$('#timeEd').val(d[3]);
-	$('#descripcionEd').val(d[4]);
+function agregaForm(id){
+	$('#idEvento').empty();
+	$('#nombreEd').empty();
+	$('#fechaEd').empty();
+	$('#timeEd').empty();
+	$('#descripcionEd').empty();
+		cadena="id="+id;
+	 $.ajax({
+            type:'POST',
+            url:'php/Eventos/getDescripcion.php',
+            dataType:"json",
+            data:cadena,
+            success:function(data){
+                    $('#idEvento').append(data.idEvento);
+                    $('#nombreEd').val(data.Nombre);
+                    $('#fechaEd').val(data.Fecha);
+                    $('#timeEd').val(data.Hora);
+                    $('#descripcionEd').val(data.Descripcion);
+                    //var logo = document.getElementById('imgConv');
+					//logo.src = "img/rm2.png";
+                    //$('#imagen').text(data.result.imagen);  
+            }
+        });
+
 }
 
 function actualizaDatos(){
@@ -61,15 +92,18 @@ function actualizaDatos(){
 
 		$.ajax({
 		type:"POST",
+		//url:"http://classhub2.000webhostapp.com/php/Eventos/actualizaEventos.php",
 		url:"php/Eventos/actualizaEventos.php",
 		data:cadena,
 		success:function(r){
 			if (r==1) {
+				//$('#tabla').load('http://classhub2.000webhostapp.com/php/Eventos/tabla.php');
 				$('#tabla').load('php/Eventos/tabla.php');
-				$('#buscador').load('componentes/buscador.php');
+				//$('#buscador').load('http://classhub2.000webhostapp.com/php/Eventos/buscador.php');
 				alertify.success("Se han actualizado con exito");
 			}else{
 				$('#tabla').load('php/Eventos/tabla.php');
+				//$('#tabla').load('http://classhub2.000webhostapp.com/php/Eventos/tabla.php');
 				alertify.error("Error del servidor");
 			}
 		}
@@ -90,10 +124,12 @@ function eliminarEvento(id){
 		success:function(r){
 			if (r==1) {
 				$('#tabla').load('php/Eventos/tabla.php');
-				$('#buscador').load('componentes/buscador.php');
+				//$('#tabla').load('http://classhub2.000webhostapp.com/php/Eventos/tabla.php');
+				//$('#buscador').load('http://classhub2.000webhostapp.com/php/Eventos/buscador.php');
 				alertify.success("Se ha eliminado con exito");
 			}else{
 				$('#tabla').load('php/Eventos/tabla.php');
+				//$('#tabla').load('http://classhub2.000webhostapp.com/php/Eventos/tabla.php');
 				alertify.error("Error del servidor");
 			}
 		}

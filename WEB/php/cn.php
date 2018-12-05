@@ -4,9 +4,8 @@ function conectar() {
 	$usuario = "root";
 	$pass = "";
 	$bd = "classhub";
-	
 	$con = mysqli_connect($servidor, $usuario, $pass, $bd);
-	
+	mysqli_set_charset($con,'utf8');
 	return $con;
 }
 

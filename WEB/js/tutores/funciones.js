@@ -1,16 +1,22 @@
-function crearEvento(nombre,tipo,descripcion){
-	cadena="nombre="+nombre+
-		"&tipo="+tipo+
-		"&descripcion="+descripcion;
+function crearTutor(){
+	//nombre,horaInicio,horaFin,emailTutor,numCubiculo
+	//cadena="nombre="+nombre+
+	//	"&horaInicio="+horaInicio+
+	//	"&horaFin="+horaFin+
+	//	"&email="+emailTutor+
+	//	"&numCubiculo="+numCubiculo;
 		//+"&image="+imagen;
-		
+		var formData1 = new FormData($('#formCrear')[0]);
+		//alert(document.getElementById('formCrear'));
 	$.ajax({
 		type:"POST",
-		url:"php/Convocatorias/agregarConvocatoria.php",
-		data:cadena,
+		url:"php/Tutores/agregarTutor.php",
+		data: formData1,
+        contentType: false,
+        processData:false,
 		success:function(r){
 			if (r==1) {
-				$('#tabla').load('php/Convocatorias/tabla.php');
+				$('#tabla').load('php/Tutores/tabla.php');
 				alertify.success("Se han agregado con exito");
 			}else if(r==2){
 				alertify.error("La imagen que intenta subir ya existe, intente cambiando el nombre.");
@@ -21,21 +27,27 @@ function crearEvento(nombre,tipo,descripcion){
 	});
 }
 function agregarDescripcion(id){
+	var image = new Image();
 	cadena="id="+id;
-	$('#tituloConvocatoria').empty();
-	$('#descCon').empty();
-	$('#tipoCon').empty();
-
+	$('#nombreTutor').empty();
+	$('#horaInicio').empty();
+	$('#horaFin').empty();
+	$('#emailTutor').empty();
+	$('#numCubiculo').empty();
 	 $.ajax({
             type:'POST',
-            url:'php/Convocatorias/getDescripcion.php',
+            url:'php/Tutores/getDescripcion.php',
             dataType:"json",
             data:cadena,
             success:function(data){
-                    $('#tituloConvocatoria').append(data.Nombre);
-                    $('#descCon').append(data.Descripcion);
-                    $('#tipoCon').append(data.TipoConvocatoria);
-                    $('#fechaConvDes').val(data.Fecha);
+                    $('#nombreTutor').append(data.Nombre);
+                    $('#horaInicio').val(data.horaInicio);
+                    $('#horaFin').val(data.horaFin);
+                    $('#emailTutor').append(data.correo);
+                    $('#numCubiculo').append(data.cubiculo);
+                    image.src = data.ruta;
+                    alert(data.ruta)
+                    $('#imgTutor').append(image);
                     //var logo = document.getElementById('imgConv');
 					//logo.src = "img/rm2.png";
                     //$('#imagen').text(data.result.imagen);  
@@ -49,15 +61,15 @@ function agregaForm(id){
 		cadena="id="+id;
 		$.ajax({
             type:'POST',
-            url:'php/Convocatorias/getDescripcion.php',
+            url:'php/Tutores/getDescripcion.php',
             dataType:"json",
             data:cadena,
             success:function(data){
                     $('#nombreEd').val(data.Nombre);
-                    $('#descripcionEd').val(data.Descripcion);
-                    $('#tipoEdit').val(data.TipoConvocatoria);
-                    $('#fechaEd').val(data.Fecha);
-                    $('#idConv').val(data.idConv);
+                    $('#horaInicioEd').val(data.horaInicio);
+                    $('#horaFinEd').val(data.horaFin);
+                    $('#emailTutorEd').val(data.correo);
+                    $('#numCubiculoEd').val(data.cubiculo);
                     //var logo = document.getElementById('imgConv');
 					//logo.src = "img/rm2.png";
                     //$('#imagen').text(data.result.imagen);  
@@ -80,14 +92,14 @@ function actualizaDatos(){
 
 		$.ajax({
 		type:"POST",
-		url:"php/Convocatorias/actualizaConvocatorias.php",
+		url:"php/Tutores/actualizaTutores.php",
 		data:cadena,
 		success:function(r){
 			if (r==1) {
-				$('#tabla').load('php/Convocatorias/tabla.php');
+				$('#tabla').load('php/Tutores/tabla.php');
 				alertify.success("Se han actualizado con exito");
 			}else{
-				$('#tabla').load('php/Convocatorias/tabla.php');
+				$('#tabla').load('php/Tutores/tabla.php');
 				alertify.error("Error del servidor");
 			}
 		}
@@ -103,14 +115,14 @@ function eliminarEvento(id){
 	cadena="id="+id;
 	$.ajax({
 		type:"POST",
-		url:"php/Convocatorias/eliminarConvocatoria.php",
+		url:"php/Tutores/eliminarConvocatoria.php",
 		data:cadena,
 		success:function(r){
 			if (r==1) {
-				$('#tabla').load('php/Convocatorias/tabla.php');
+				$('#tabla').load('php/Tutores/tabla.php');
 				alertify.success("Se ha eliminado con exito");
 			}else{
-				$('#tabla').load('php/Convocatorias/tabla.php');
+				$('#tabla').load('php/Tutores/tabla.php');
 				alertify.error("Error del servidor");
 			}
 		}

@@ -1,7 +1,4 @@
-<?php 
-session_start();
-unset($_SESSION['consulta']);
- ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +19,7 @@ unset($_SESSION['consulta']);
 </head>
 <body>
   <!----------------- Inicio de NAVBAR ---------------------->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">Navbar</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -30,23 +27,22 @@ unset($_SESSION['consulta']);
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#">Eventos <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
+        <a class="nav-link" href="convocatorias.html">Convocatorias</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
+        <a class="nav-link" href="reportes.html">Reportes</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
+        <a class="nav-link" href="tutores.html">Tutores</a>
       </li>
     </ul>
   </div>
 </nav>
 <!-- Fin de navbar-->
   <div class="container">
-    <div id="buscador"></div>
     <div id="tabla"></div>
   </div>
 
@@ -55,9 +51,9 @@ unset($_SESSION['consulta']);
 
 <div class="modal fade" id="modal-nuevoEvento" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <h4 class="modal-title" id="myModalLabel">Agrega nuevo Evento</h4>
+    <div class="modal-content">  
       <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Agrega nuevo Evento</h4>
         <button type="button" class="close float-left" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> 
       </div>
       <div class="modal-body">
@@ -71,7 +67,7 @@ unset($_SESSION['consulta']);
         </div>
         <div class="form-group">
           <label>Hora</label>
-          <input type="time" name="" id="time" class="form-control input-sm">
+          <input type="time" name="" id="hora" class="form-control input-sm">
         </div>
         <div class="form-group">
           <label>Descripcion</label>
@@ -97,8 +93,8 @@ unset($_SESSION['consulta']);
 <div class="modal fade" id="modal-edicion" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <h4 class="modal-title" id="myModalLabel">Editar Evento</h4>
       <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Editar Evento</h4>
         <button type="button" class="close float-left" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> 
       </div>
       <div class="modal-body">
@@ -134,31 +130,46 @@ unset($_SESSION['consulta']);
   </div>
 </div>
 <!-- Modal para ver informacion detallada de evento -->
-<div class="modal fade bd-example-modal-lg" id="model-evento" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
+<div class="modal fade" id="modal-evento" role="dialog" aria-labelledby="exampleModalLongTitle">
+  <div class="modal-dialog" role="document">
     <div class="modal-content">
-       <h4 class="modal-title m-2" id="tituloEvento"></h4>
        <div class="modal-header">
+          <h4 class="modal-title" id="tituloEvento"></h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> 
         </div>
-        <div class="form-group">
-          <label>Fecha de Evento</label>
-          <input type="date" name="" id="fechaEvento" class="form-control input-m">
+        <div class="modal-body">
+        <!-- Descripcion -->
+        <div class="container">
+          <div class="row">
+            <!-- Tipo de Convocatoria -->
+            <div class="col-sm">
+              <h5 class="">Hora:</h5>
+                <input type="time" name="" id="horaEvento">
+            </div>
+            <!-- Fecha Limite -->
+            <div class="col-sm">
+              <h5>Fecha Evento:</h5>
+              <input type="date" id="fechaEvento">
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-          <label>Hora Evento</label>
-          <input type="time" name="" id="horaEvento" class="form-control input-m">
+        <div class="col-sm-9">
+            <h5>Descripcion</h5>
         </div>
-        <div class="form-group">
-          <label>Descripcion</label>
-          <p id="descripEvento"></p>
+          <div class="container mr-2 ml-2">
+              <p id="descripEvento"></p>
+          </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary mx-auto" data-dismiss="modal"
+            id="actualizarStatus">Cerrar</button>
         </div>
-         <button type="button" class="btn btn-primary" data-dismiss="modal">
-          Ok
-        </button>
+      </div>
     </div>
   </div>
 </div>
+</div>
+
+
 
 </body>
 </html>
@@ -166,7 +177,6 @@ unset($_SESSION['consulta']);
 <script type="text/javascript">
   $(document).ready(function(){
     $('#tabla').load('php/Eventos/tabla.php');
-    $('#buscador').load('php/Eventos/buscador.php');
   });
 </script>
 <script type="text/javascript">

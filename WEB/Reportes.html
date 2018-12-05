@@ -1,82 +1,117 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Reportes</title>
-	<meta name="viewport" content="width = device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-	<link rel="stylesheet"  href="css/talacha.css">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Reportes</title>
+
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="js/alertifyjs/css/alertify.css">
+  <link rel="stylesheet" type="text/css" href="js/alertifyjs/css/themes/default.css">
+  <link rel="stylesheet" type="text/css" href="js/select2/css/select2.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <script src="js/jquery.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="js/alertifyjs/alertify.js"></script>
+  <script src="js/select2/js/select2.js"></script>
+
+  <meta charset="utf-8">
+
 </head>
 <body>
-	<header>
-		<div class="container">
-			 <div class="señal">
-  				  <a  href="#" role="button"> <img src="xa/atras.png" style="width: 40px"></a>
-  				  <a  href="#" role="button"> <img src="xa/inicio.png" style="width: 40px"></a>
-			 </div>	
-			 <div class="nom">
-			 	<h1>Reportes</h1>
-			 </div>
-			 <div class="perfil">
-			 	<img src="xa/cara.png" alt="Responsive image" class="img-circle" style=" width: 50px">
-			 	<label>	Juanita Perez</label>
-			 </div>
-		</div>
-	</header>
-	<br>
-	<br>
-	<div class="caja">
-		<div class="table-responsive">
-			<center>
-  			<table class="table table-hover" style="width: 70%">
-  				
- 				 <tr>
-  					  <td><h3>Reporte 1</h3></td>
-  					  <td></td>
-  					  <td>
-  					  	<a  href="#" role="button"> <img src="xa/e.png" style="width: 40px"></a>
-  					  	<a  href="#" role="button"> <img src="xa/x.png" style="width: 40px"></a>
-
-  					  </td>
- 				 </tr>
- 				 <tr>
-   					 <td><h3>Reporte 2</h3></td>
-   					 <td></td>
-   					 <td>
-   						<a  href="#" role="button"><img src="xa/e.png" style="width: 40px"></a> 
-  					  	<a  href="#" role="button"><img src="xa/x.png" style="width: 40px"></a>
-   					 </td>
-				  </tr>
-				   <tr>
-   					 <td><h3>Reporte 3</h3></td>
-   					 <td></td>
-   					 <td>
-   						<a  href="#" role="button"><img src="xa/e.png" style="width: 40px"></a> 
-  					  	<a  href="#" role="button"><img src="xa/x.png" style="width: 40px"></a>
-   					 </td>
-				  </tr>
-				  <tr>
-   					 <td><h3>Reporte 4</h3></td>
-   					 <td></td>
-   					 <td>
-   						<a  href="#" role="button"><img src="xa/e.png" style="width: 40px"></a> 
-  					  	<a  href="#" role="button"><img src="xa/x.png" style="width: 40px"></a>
-   					 </td>
-				  </tr>
-				  <tr>
-   					 <td><h3>Reporte 5</h3></td>
-   					 <td></td>
-   					 <td>
-   						<a  href="#" role="button"><img src="xa/e.png" style="width: 40px"></a> 
-  					  	<a  href="#" role="button"><img src="xa/x.png" style="width: 40px"></a>
-   					 </td>
-				  </tr>
-  			</table>
-  		</center>
-		</div>
+  <!----------------- Inicio de NAVBAR ---------------------->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Reportes<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="convocatorias.html">Convocatorias</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="eventos.html">Eventos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="tutores.html">Tutores</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<!-- Fin de navbar-->
+  <div class="container">
+    <div id="tabla"></div>
+  </div>
+<!-- Modal para ver editar evento -->
+<div class="modal fade bd-example-modal" id="modal-reporte">
+  <div class="modal-dialog">
+    <div class="modal-content">
+       <div class="modal-header">
+          <h4 class="modal-title" id="tituloReporte"></h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> 
+        </div>
+        <div class="modal-body">
+        <input type="text" hidden="" id="idReporte" name="">
+        <!-- Descripcion -->
+          <div class="col-sm-9">
+            <h5>Descripcion</h5>
+          </div>
+          <div class="container mr-2 ml-2">
+              <p id="descripcion"></p>
+          </div>
+        <!-- Nombre Usuario -->
+        <div class="col-sm-9">
+          <h5>Usuario</h5>
+        </div>
+        <div class="container mr-2 ml-2">
+          <p id="usuario"></p>
+        </div>
+        <!-- Status -->
+        <div class="col-sm-9 mt-2 mb-3">
+          <h5>Status</h5>
+        </div>
+        <div class="container mr-2 ml-2">
+          <p id="status"></p>
+        </div>
+        <!-- Cambiar Status -->
+        <div class="col-sm-9 mt-2 mb-3">
+          <h5>Cambiar Status</h5>
+        </div>
+        <div class="container mr-2 ml-2">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="opcion" id="exampleRadios1" value="2" checked>
+            <label class="form-check-label" for="exampleRadios1">
+              <p class='text-danger text-center font-weight-bold'>Rechazar</p>
+            </label>
+          </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="opcion" id="exampleRadios2" value="1">
+          <label class="form-check-label" for="exampleRadios2">
+            <p class='text-success text-center font-weight-bold'>Aprobar</p>
+          </label>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary mx-auto" data-dismiss="modal"
+            id="actualizarStatus">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-
-
-<script src="js/jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>	
+</div>
 </body>
 </html>
+<script src="js/reportes/funciones.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#tabla').load('php/Reportes/tabla.php');
+    $('#actualizarStatus').click(function(){
+      actualizarStatus();
+    });
+
+  });
+</script>

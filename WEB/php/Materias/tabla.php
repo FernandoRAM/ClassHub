@@ -7,32 +7,33 @@
 <div class="row">
 
 	<div class="col-sm-12">
-		<h2>Agregar Eventos Importantes al Calendario</h2>
-		<button class="btn btn-primary float-right mb-3" data-toggle="modal" data-target="#modal-nuevoEvento">Agregar nuevo Evento
+		<h2>Materias</h2>
+		<button class="btn btn-primary float-right mb-3" data-toggle="modal" data-target="#modal-nuevaMateria">Agregar nueva Materia
 			<span class="glyphicon glyphicon-plus"></span>
 		</button>
 		<table class="table table-hover table-condensed table-bordered" id="dtTabla">
 			<thead class="thead-dark">
 			<tr>
-				<th>Nombre de Evento</th>
-				<th>Hora</th>
-				<th>Fecha</th>
+				<th>Materia</th>
+				<th>Carrera</th>
+				<th>Bloque</th>
 				<th>Opciones</th>
 
 			</tr>
 			</thead>
 			<tbody>
 			<?php 
-				$query=("SELECT * FROM eventosimportantes");
+				$query=("SELECT * FROM materias");
 				$result=mysqli_query($con,$query);
 				while($row=mysqli_fetch_row($result)){
 				
 			 ?>
 			<tr>
-				<td style="cursor: pointer;" data-toggle="modal" data-target="#modal-evento"
-				onclick="agregarDescripcion('<?php echo $row[0]; ?>');"><?php echo $row[1]; ?></td>
-				<td><?php echo date('g:ia', strtotime($row[3])); ?></td>
-				<td><input type="date" value="<?php echo $row[2]; ?>" name=""></td>
+				<td style="cursor: pointer;" onclick="cargarClases('<?php echo $row[0]; ?>');">
+					<?php echo $row[1]; ?>		
+				</td>
+				<td><?php echo $row[2]; ?></td>
+				<td><?php echo $row[3]; ?></td>
 				<td>
 					<button class="btn btn-warning" onclick="agregaForm('<?php echo $row[0]; ?>')" 
 					data-toggle="modal" data-target="#modal-edicion">

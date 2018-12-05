@@ -4,35 +4,39 @@
 	$con=conectar();
 				
 ?>
+<meta charset="utf-8">
 <div class="row">
 
 	<div class="col-sm-12">
-		<h2>Agregar Eventos Importantes al Calendario</h2>
-		<button class="btn btn-primary float-right mb-3" data-toggle="modal" data-target="#modal-nuevoEvento">Agregar nuevo Evento
+		<h2>Tutores</h2>
+		<button class="btn btn-primary float-right mb-3" data-toggle="modal" data-target="#modal-nuevoTutor">Agregar nuevo Tutor
 			<span class="glyphicon glyphicon-plus"></span>
 		</button>
 		<table class="table table-hover table-condensed table-bordered" id="dtTabla">
 			<thead class="thead-dark">
-			<tr>
-				<th>Nombre de Evento</th>
-				<th>Hora</th>
-				<th>Fecha</th>
-				<th>Opciones</th>
-
-			</tr>
+				<tr>
+					<th>Nombre</th>
+					<th>Cubiculo</th>
+					<th>Horario</th>
+					<th>Opciones</th>
+				</tr>
 			</thead>
 			<tbody>
-			<?php 
-				$query=("SELECT * FROM eventosimportantes");
+			<?php 			
+				$query=("SELECT * FROM tutores");
+
+				
 				$result=mysqli_query($con,$query);
 				while($row=mysqli_fetch_row($result)){
-				
+				//idConvocatoria,Nombre,TipoConvocatoria,Descripcion
 			 ?>
 			<tr>
-				<td style="cursor: pointer;" data-toggle="modal" data-target="#modal-evento"
-				onclick="agregarDescripcion('<?php echo $row[0]; ?>');"><?php echo $row[1]; ?></td>
-				<td><?php echo date('g:ia', strtotime($row[3])); ?></td>
-				<td><input type="date" value="<?php echo $row[2]; ?>" name=""></td>
+				<td style="cursor: pointer;" data-toggle="modal" data-target="#modal-descripcion"
+				onclick="agregarDescripcion('<?php echo $row[0]; ?>')"><?php echo $row[1]; ?></td>
+				<td><?php echo $row[3]; ?></td>
+				<td>
+                	<?php echo date('g:ia', strtotime($row[5])).' - '.date('g:ia', strtotime($row[6])); ?>
+				</td>
 				<td>
 					<button class="btn btn-warning" onclick="agregaForm('<?php echo $row[0]; ?>')" 
 					data-toggle="modal" data-target="#modal-edicion">
@@ -44,7 +48,7 @@
 				</td>
 			</tr>
 			<?php } ?>
-			<tbody>
+			</tbody>
 		</table>
 	</div>
 </div>
